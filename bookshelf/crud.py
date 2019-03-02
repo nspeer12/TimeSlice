@@ -39,7 +39,7 @@ def upload_image_file(file):
 
     return public_url
 
-'''
+
 @crud.route("/")
 def list():
     token = request.args.get('page_token', None)
@@ -52,10 +52,9 @@ def list():
         "list.html",
         books=books,
         next_page_token=next_page_token)
-'''
+
 
 # [START list_mine]
-@crud.route("/")
 @crud.route("/mine")
 @oauth2.required
 def list_mine():
