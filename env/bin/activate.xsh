@@ -25,7 +25,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/nspeer252/getting-started-python/4-auth/env"
+$VIRTUAL_ENV = r"/home/yjangwynter/Documents/hackathon/TimeSlice/env"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]
