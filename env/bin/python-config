@@ -1,4 +1,4 @@
-#!/home/yjangwynter/Documents/hackathon/TimeSlice/env/bin/python
+#!/Users/admin/Desktop/TimeSlice/env/bin/python
 
 import sys
 import getopt

@@ -25,7 +25,7 @@ def _deactivate(args):
 _deactivate(["nondestructive"])
 aliases["deactivate"] = _deactivate
 
-$VIRTUAL_ENV = r"/home/yjangwynter/Documents/hackathon/TimeSlice/env"
+$VIRTUAL_ENV = r"/Users/admin/Desktop/TimeSlice/env"
 
 $_OLD_VIRTUAL_PATH = $PATH
 $PATH = $PATH[:]

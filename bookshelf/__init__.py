@@ -15,7 +15,7 @@
 import json
 import logging
 
-from flask import current_app, Flask, redirect, request, session, url_for
+from flask import current_app, Flask, redirect, request, session, url_for, render_template
 import httplib2
 # [START include]
 from oauth2client.contrib.flask_util import UserOAuth2
@@ -81,6 +81,10 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
         An internal error occurred: <pre>{}</pre>
         See logs for full stacktrace.
         """.format(e), 500
+
+    @app.route("/testcal/")
+    def testcal():
+        return redirect(url_for('crud.testcal'))
 
     return app
 
