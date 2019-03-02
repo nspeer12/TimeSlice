@@ -20,6 +20,13 @@ import httplib2
 # [START include]
 from oauth2client.contrib.flask_util import UserOAuth2
 
+# adding calendar imports
+import os.path
+import datetime
+from googleapiclient.discovery import build
+from google_auth_oauthlib.flow import InstalledAppFlow
+from google.auth.transport.requests import Request
+# end calendar imports
 
 oauth2 = UserOAuth2()
 # [END include]
@@ -48,7 +55,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     # Initalize the OAuth2 helper.
     oauth2.init_app(
         app,
-        scopes=['email', 'profile'],
+        scopes=['email', 'profile', 'https://www.googleapis.com/auth/calendar.readonly'],
         authorize_callback=_request_user_info)
     # [END init_app]
 
@@ -70,7 +77,7 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     # Add a default root route.
     @app.route("/")
     def index():
-        return redirect(url_for('crud.list'))
+        return redirect(url_for('crud.list_mine'))
 
     # Add an error handler. This is useful for debugging the live application,
     # however, you should disable the output of the exception for production
@@ -117,8 +124,11 @@ def _request_user_info(credentials):
     """
     http = httplib2.Http()
     credentials.authorize(http)
+
+    # I want to add onto this so we get access to google calendar
     resp, content = http.request(
         'https://www.googleapis.com/oauth2/v3/userinfo')
+
 
     if resp.status != 200:
         current_app.logger.error(
