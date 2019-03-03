@@ -21,11 +21,13 @@ import httplib2
 from oauth2client.contrib.flask_util import UserOAuth2
 
 # adding calendar imports
+'''
 import os.path
 import datetime
 from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
+'''
 # end calendar imports
 
 oauth2 = UserOAuth2()
