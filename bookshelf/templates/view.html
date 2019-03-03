@@ -17,20 +17,34 @@
 {% extends "base.html" %}
 
 {% block content %}
+<style>
+  #brand {
+    color: rgb(66, 211, 66);
+    font-family: 'Chivo', sans-serif;
+    font-size: 25px;
+  }
+
+  .main-content {
+    display: flex;
+    margin: 20px auto;
+    grid-template-columns: 2fr 2fr 2fr 2fr;
+
+  }
+</style>
 
 <h3>Book</h3>
 
 <div class="btn-group">
   <a href="/books/{{book.id}}/edit" class="btn btn-primary btn-sm">
     <i class="glyphicon glyphicon-edit"></i>
-    Edit
+    Edit book
   </a>
   <a href="/books/{{book.id}}/delete" class="btn btn-danger btn-sm">
     <i class="glyphicon glyphicon-trash"></i>
-    Mark Done
+    Delete book
   </a>
 </div>
-
+<div class="main-content">
 <div class="media">
   <div class="media-left">
     {% if book.imageUrl %}
@@ -44,9 +58,11 @@
       {{book.title}}
       <small>{{book.publishedDate}}</small>
     </h4>
+    <h5 class="book-author">By {{book.author|default('Unknown', True)}}</h5>
     <p class="book-description">{{book.description}}</p>
     <small class="book-added-by">Added by {{book.get('createdBy')|default('Anonymous', True)}}</small>
   </div>
+</div>
 </div>
 
 {% endblock %}

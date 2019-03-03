@@ -13,11 +13,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #}
-
+<style>
+#button{
+box-shadow: 3px 3px rgb(0, 0, 0);
+transition: all .2s ease-in-out;
+font-family: 'Roboto', sans-serif;
+}
+#button:hover{
+box-shadow: 3px 3px black;
+transform: scale(1.1)
+}</style>
 {% extends "base.html" %}
 
 {% block content %}
-<h3>{{action}} task</h3>
+<h3>{{action}} Task</h3>
 
 <form method="POST" enctype="multipart/form-data">
 
@@ -61,7 +70,7 @@
     <input type="text" name="createdById" id="createdById" value="{{book.createdById}}" class="form-control"/>
   </div>
 
-  <button type="submit" class="btn btn-success">Save</button>
+  <button id="button" type="submit" class="btn btn-success">Save</button>
 </form>
 
 {% endblock %}

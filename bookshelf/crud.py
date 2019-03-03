@@ -9,7 +9,7 @@
 # Unless required by applicable law or agreed to in writing, software
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
+# See the License for the specific language gmaioverning permissions and
 # limitations under the License.
 
 from bookshelf import get_model, oauth2, storage
@@ -40,15 +40,14 @@ def upload_image_file(file):
     return public_url
 
 
-@crud.route("/secret-list")
+@crud.route("/")
 def list():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
 
-    books, next_page_token = get_model().list_by_user(
-        user_id=session['profile']['email'],
-        cursor=token)
+    books, next_page_token = get_model().list(cursor=token)
+
     return render_template(
         "list.html",
         books=books,
@@ -56,7 +55,6 @@ def list():
 
 
 # [START list_mine]
-@crud.route("/")
 @crud.route("/mine")
 @oauth2.required
 def list_mine():

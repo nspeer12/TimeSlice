@@ -13,23 +13,33 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #}
+<style>
+#title{
+color: rgb(66, 211, 66);
+font-family: 'Chivo', sans-serif;
+font-size:20px;
+float:left;
+}
+</style>
 
 {% extends "base.html" %}
 
 {% block content %}
 
-<h3>Tasks</h3>
-<a href="/books/add" class="btn btn-success btn-sm">
+<h3 id="title">Tasks - Python on Google Cloud Platform</h3>
+<a id="addTask" href="/books/add" class="addTask btn btn-success btn-sm">
   <i class="glyphicon glyphicon-plus"></i>
   Add Task
 </a>
+<br/>
 
 {% for book in books %}
-<div class="media">
+<div class="content">
+  <div class="item media">
   <a href="/books/{{book.id}}">
-    <div class="media-left">
+  <div class="item media-left">
       {% if book.imageUrl %}
-        <img src="{{book.imageUrl}}">
+        <img id=""  src="{{book.imageUrl}}">
       {% else %}
         <img src="http://placekitten.com/g/128/192">
       {% endif %}
@@ -40,6 +50,8 @@
     </div>
   </a>
 </div>
+</div>
+
 {% else %}
 <p>No books found</p>
 {% endfor %}
