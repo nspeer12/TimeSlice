@@ -40,14 +40,15 @@ def upload_image_file(file):
     return public_url
 
 
-@crud.route("/")
+@crud.route("/secret-list")
 def list():
     token = request.args.get('page_token', None)
     if token:
         token = token.encode('utf-8')
 
-    books, next_page_token = get_model().list(cursor=token)
-
+    books, next_page_token = get_model().list_by_user(
+        user_id=session['profile']['email'],
+        cursor=token)
     return render_template(
         "list.html",
         books=books,
@@ -55,6 +56,7 @@ def list():
 
 
 # [START list_mine]
+@crud.route("/")
 @crud.route("/mine")
 @oauth2.required
 def list_mine():

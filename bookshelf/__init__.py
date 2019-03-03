@@ -81,6 +81,10 @@ def create_app(config, debug=False, testing=False, config_overrides=None):
     def index():
         return redirect(url_for('crud.list_mine'))
 
+
+    @app.route("/secret-list")
+    def secret():
+        return redirect(url_for('crud.secret-list'))
     # Add an error handler. This is useful for debugging the live application,
     # however, you should disable the output of the exception for production
     # applications.

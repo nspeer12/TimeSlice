@@ -20,6 +20,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/base.css">
   </head>
   <body>
     <div class="navbar navbar-default">
@@ -28,10 +29,10 @@
           <div class="navbar-brand">Time Slice</div>
         </div>
         <ul class="nav navbar-nav">
-          <li><a href="/books">Don't go here</a></li>
+          <!-- <li><a href="/books">Don't go here</a></li> -->
           <li><a href="/books/mine">My Tasks</a></li>
           {% if session.profile %}
-          <li><a href="/testcal/">test cal</a></li>
+          <li><a href="/testcal/" id="testcal">test cal</a></li>
           {% endif %}
         </ul>
         {# [START profile] #}
